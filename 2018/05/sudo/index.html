@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="濡沫流年">
 <meta property="og:description" content="更改身份su 切换身份执行命令:su username –c &amp;apos;command&amp;apos; sudo      来自sudo包，man 5 sudoers     能够限制指定用户在指定主机上运行某些命令。     可以提供日志，忠实地记录每个用户使用sudo做了些什么，且能将日志传到中心主机或者日志服务器。     为系统管理员提供配置文件，允许系统管理员集中地管理用户的使用权限和使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-09T11:52:16.000Z">
+<meta property="og:updated_time" content="2022-11-11T14:55:23.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sudo">
 <meta name="twitter:description" content="更改身份su 切换身份执行命令:su username –c &amp;apos;command&amp;apos; sudo      来自sudo包，man 5 sudoers     能够限制指定用户在指定主机上运行某些命令。     可以提供日志，忠实地记录每个用户使用sudo做了些什么，且能将日志传到中心主机或者日志服务器。     为系统管理员提供配置文件，允许系统管理员集中地管理用户的使用权限和使用">
@@ -574,7 +574,8 @@ cat /etc/sudoers.d/ma
 示例4
     User_Alias SYSADER=wang,mage,%admins
     User_Alias DISKADER=tom
-    Host_Alias SERS=www.magedu.com,172.16.0.0/24
+    Host_Alias SERS=www.sam.com,172.16.0.0/24
+    Host_Alias SERS=www.sam.com,172.16.0.0/24
     Runas_Alias OP=root
     Cmnd_Alias SYDCMD=/bin/chown,/bin/chmod
     Cmnd_Alias DSKCMD=/sbin/parted,/sbin/fdisk
@@ -867,7 +868,7 @@ sudo [-u user] COMMAND
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">575k</span>
+    <span title="站点总字数">578k</span>
   
 
   
@@ -876,7 +877,7 @@ sudo [-u user] COMMAND
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:43</span>
+    <span title="站点阅读时长">8:46</span>
   
 </div>
 
@@ -897,7 +898,7 @@ sudo [-u user] COMMAND
 <div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    
     <span class="post-meta-divider"></span>
 </span>
 

@@ -110,7 +110,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/http配置/6.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/http配置/7.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/http配置/10.jpg">
-<meta property="og:updated_time" content="2019-01-10T13:28:08.000Z">
+<meta property="og:updated_time" content="2022-11-11T14:55:23.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="http配置">
 <meta name="twitter:description" content="httpd简介httpd是apache基金会（ASF：apache foundation）维护，其官网为httpd.apache.org,其基金会下有众多的著名软件。 ！    http的版本        httpd 2.2 (Centos 6平台的默认版本，其event模型仍为测试模型)        httpd 2.4(Centos 7平台的默认版本，目前最新稳定版本，对event可用于生产">
@@ -855,7 +855,8 @@ mod_ssl，加密httpd
     1. 临时重定向，Temp，返回状态码302
     2. 永久重定向，Permanent，返回状态码301
 示例： 
-    Redirect temp / https://www.magedu.com/ 
+    Redirect temp / https://www.sam.com/ 
+    Redirect temp / https://www.sam.com/ 
 HSTS 
 HSTS:HTTP Strict Transport Security    
 服务器端配置支持HSTS后，会在给浏览器返回的HTTP首部中携带HSTS字段。浏览器获取到该信息后，会将所有HTTP访问请求在内部做307跳转到HTTPS。 而无需任何网络过程 
@@ -875,7 +876,8 @@ HSTS preload list
     ProxyPass &quot;/images&quot;  &quot;http://www.example.com/&quot; 
     ProxyPassReverse &quot;/images&quot;  http://www.example.com/ 
 示例： &lt;VirtualHost *&gt;     
-    ServerName www.magedu.com     
+    ServerName www.sam.com     
+    ServerName www.sam.com     
         ProxyPass / http://localhost:8080/     
         ProxyPassReverse / http://localhost:8080/ 
     &lt;/VirtualHost&gt; 
@@ -1212,7 +1214,7 @@ ab  [OPTIONS]  URL
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">575k</span>
+    <span title="站点总字数">578k</span>
   
 
   
@@ -1221,7 +1223,7 @@ ab  [OPTIONS]  URL
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:43</span>
+    <span title="站点阅读时长">8:46</span>
   
 </div>
 
@@ -1242,7 +1244,7 @@ ab  [OPTIONS]  URL
 <div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    
     <span class="post-meta-divider"></span>
 </span>
 

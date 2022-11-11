@@ -110,7 +110,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/nginx代理与缓存/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/nginx代理与缓存/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/nginx代理与缓存/3.jpg">
-<meta property="og:updated_time" content="2019-03-09T12:12:55.000Z">
+<meta property="og:updated_time" content="2022-11-11T14:56:14.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx代理与缓存">
 <meta name="twitter:description" content="四层调度：nginx(stream module) 七层调度：nginx(http_upstream module), haproxy(mode http), httpd, ngx_http_proxy_module1、proxy_pass URL;     上下文:location, if in location, limit_except       假如访问index.html     注意">
@@ -916,7 +916,8 @@ proxyBuffer开启后才能使用proxy_cachhe。将已有的数据在内存中建
     proxy_cache_path /path/to/cache levels=1:2 keys_zone=my_cache:10m max_size=10g inactive=60m use_temp_path=off;
     server {
         ...
-        add_header Magedu-Cache &quot;$upstream_cache_status form $server_addr&quot;;#给请求响应增加一个头部信息，表示从服务器上返回的cache状态怎么样（有没有命中）
+        add_header sam-Cache &quot;$upstream_cache_status form $server_addr&quot;;#给请求响应增加一个头部信息，表示从服务器上返回的cache状态怎么样（有没有命中）
+        add_header sam-Cache &quot;$upstream_cache_status form $server_addr&quot;;#给请求响应增加一个头部信息，表示从服务器上返回的cache状态怎么样（有没有命中）
         upstream web {
         server backend1.example.com;
         server backend2.example.com;
@@ -1249,7 +1250,7 @@ proxyBuffer开启后才能使用proxy_cachhe。将已有的数据在内存中建
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">575k</span>
+    <span title="站点总字数">578k</span>
   
 
   
@@ -1258,7 +1259,7 @@ proxyBuffer开启后才能使用proxy_cachhe。将已有的数据在内存中建
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:43</span>
+    <span title="站点阅读时长">8:46</span>
   
 </div>
 
@@ -1279,7 +1280,7 @@ proxyBuffer开启后才能使用proxy_cachhe。将已有的数据在内存中建
 <div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    
     <span class="post-meta-divider"></span>
 </span>
 

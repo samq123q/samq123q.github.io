@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="濡沫流年">
 <meta property="og:description" content="编程基础程序编程风格：      过程式：以指令为中心 数据服务于指令      对象式：以数据为中心 指令服务于数据  shell程序：提供了编程能力 解释执行 高级编程语言：      编译：高级语言--&amp;gt;编译器--&amp;gt;机器代码--&amp;gt;执行 C C++      解释：高级语言--&amp;gt;执行--&amp;gt;解释器--&amp;gt;机器代码 shell python php JavaScr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-09T11:51:33.000Z">
+<meta property="og:updated_time" content="2022-11-11T14:55:23.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell编程基础">
 <meta name="twitter:description" content="编程基础程序编程风格：      过程式：以指令为中心 数据服务于指令      对象式：以数据为中心 指令服务于数据  shell程序：提供了编程能力 解释执行 高级编程语言：      编译：高级语言--&amp;gt;编译器--&amp;gt;机器代码--&amp;gt;执行 C C++      解释：高级语言--&amp;gt;执行--&amp;gt;解释器--&amp;gt;机器代码 shell python php JavaScr">
@@ -467,7 +467,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">9.3k</span>
+                <span title="本文字数">9.4k</span>
               
 
               
@@ -481,7 +481,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">8 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -613,8 +613,9 @@ echo $?
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">df |grep <span class="string">"/dev/sd"</span> |tr -s <span class="string">" "</span> %|cut -d% -f5|sort -nr|head -n1</span><br></pre></td></tr></table></figure>
 <pre><code>4、编写脚本/root/bin/links.sh,显示正连接本主机的每个远程主机的IPv4地址和连接数，并按连接数从大到小排序  
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">netstat -nt |tr -s <span class="string">" "</span> :|cut -d: -f6 |sort|uniq -c |sort -nr</span><br></pre></td></tr></table></figure>
-<pre><code>5.创建用户 设置初始口令magedu 并且初次登录提醒更改口令
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">useradd <span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> magedu |passwd --stdin <span class="variable">$1</span> &gt;&gt; /dev/null</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"password is changed"</span></span><br><span class="line">passwd -e <span class="variable">$1</span> &gt;&gt; /dev/null</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"please change password"</span></span><br></pre></td></tr></table></figure>
+<pre><code>5.创建用户 设置初始口令sam 并且初次登录提醒更改口令
+5.创建用户 设置初始口令sam 并且初次登录提醒更改口令
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">useradd <span class="variable">$1</span></span><br><span class="line"><span class="built_in">echo</span> sam |passwd --stdin <span class="variable">$1</span> &gt;&gt; /dev/null</span><br><span class="line"><span class="built_in">echo</span> sam |passwd --stdin <span class="variable">$1</span> &gt;&gt; /dev/null</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"password is changed"</span></span><br><span class="line">passwd -e <span class="variable">$1</span> &gt;&gt; /dev/null</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"please change password"</span></span><br></pre></td></tr></table></figure>
 <h3 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h3><pre><code>实现算术运算：
 +,-,* / %取模（取余） **（乘方）
     (1)let num=算术表达式 let r=9+9
@@ -745,7 +746,8 @@ false
 true
 
 判断变量HOSTNAME非空或等于localhost.localdomain，如果满足该条件则执行localhost.localdomain命令  
-    [ -z “$HOSTNAME” -o $HOSTNAME &quot;==\&quot;localhost.localdomain&quot; ] &amp;&amp; hostname www.magedu.com    
+    [ -z “$HOSTNAME” -o $HOSTNAME &quot;==\&quot;localhost.localdomain&quot; ] &amp;&amp; hostname www.sam.com    
+    [ -z “$HOSTNAME” -o $HOSTNAME &quot;==\&quot;localhost.localdomain&quot; ] &amp;&amp; hostname www.sam.com    
 判断/bin/cat为普通文件并且有执行权限，如果满足则执行cat /etc/fstab  
     [ -f /bin/cat -a -x /bin/cat ] &amp;&amp; cat /etc/fstab    
 判断ip地址：如果是ip地址，则输出true，否则为false  
@@ -1052,7 +1054,7 @@ $-变量
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">575k</span>
+    <span title="站点总字数">578k</span>
   
 
   
@@ -1061,7 +1063,7 @@ $-变量
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:43</span>
+    <span title="站点阅读时长">8:46</span>
   
 </div>
 
@@ -1082,7 +1084,7 @@ $-变量
 <div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    
     <span class="post-meta-divider"></span>
 </span>
 

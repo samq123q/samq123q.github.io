@@ -126,7 +126,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/Ansible/14.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/09/Ansible/19.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/09/Ansible/21.jpg">
-<meta property="og:updated_time" content="2019-03-09T12:44:24.000Z">
+<meta property="og:updated_time" content="2022-11-11T14:55:23.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ansible">
 <meta name="twitter:description" content="ansible中文指南 Github上的ansible-galaxy示例 相关运维管理工具使用方法： pssh saltstack puppet 常用自动化运维工具     PSSH：适用于主机数量很少的环境(基础ssh的key验证)     Ansible:python,Agentless,中小型应用环境(自带代理功能)     Saltstack:python，一般需部署agent，执行效率更">
@@ -862,9 +862,9 @@ playbook基础组件：
 
 3.在/etc/ansible/hosts中定义
     普通变量：主机组中主机单独定义，优先级高于公共变量
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ansible/hosts     </span><br><span class="line">[websrv] </span><br><span class="line">www1.magedu.com http_port=80</span><br><span class="line">www2.magedu.com http_port=8080</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ansible/hosts     </span><br><span class="line">[websrv] </span><br><span class="line">www1.sam.com http_port=80</span><br><span class="line">www1.sam.com http_port=80</span><br><span class="line">www2.sam.com http_port=8080</span><br><span class="line">www2.sam.com http_port=8080</span><br></pre></td></tr></table></figure>
 <pre><code>公共（组）变量：针对主机组中所有主机定义统一变
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[websrvs] </span><br><span class="line">www1.magedu.com </span><br><span class="line">www2.magedu.com </span><br><span class="line"> </span><br><span class="line">[websrvs:vars] </span><br><span class="line">ntp_server=ntp.magedu.com</span><br><span class="line">nfs_server=nfs.magedu.com </span><br><span class="line">组嵌套：inventory中，组还可以包含其它的组，并且也可以向组中的主机指定变量。不过，这些变量只能在ansible-playbook中使用，而ansible不支持。</span><br><span class="line"></span><br><span class="line">[apache]</span><br><span class="line">httpd1.magedu.com</span><br><span class="line">httpd2.magedu.com</span><br><span class="line"></span><br><span class="line">[nginx]</span><br><span class="line">ngx1.magedu.com</span><br><span class="line">ngx2.magedu.com</span><br><span class="line"></span><br><span class="line">[webservers:children]    <span class="comment"># 引用其他组作为自己组内的主机(子组)</span></span><br><span class="line">apache                      <span class="comment"># apache组</span></span><br><span class="line">nginx                     <span class="comment"># nginx组</span></span><br><span class="line"></span><br><span class="line">[webservers:vars]</span><br><span class="line">ntp_server=ntp.magedu.com</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[websrvs] </span><br><span class="line">www1.sam.com </span><br><span class="line">www1.sam.com </span><br><span class="line">www2.sam.com </span><br><span class="line">www2.sam.com </span><br><span class="line"> </span><br><span class="line">[websrvs:vars] </span><br><span class="line">ntp_server=ntp.sam.com</span><br><span class="line">ntp_server=ntp.sam.com</span><br><span class="line">nfs_server=nfs.sam.com </span><br><span class="line">nfs_server=nfs.sam.com </span><br><span class="line">组嵌套：inventory中，组还可以包含其它的组，并且也可以向组中的主机指定变量。不过，这些变量只能在ansible-playbook中使用，而ansible不支持。</span><br><span class="line"></span><br><span class="line">[apache]</span><br><span class="line">httpd1.sam.com</span><br><span class="line">httpd1.sam.com</span><br><span class="line">httpd2.sam.com</span><br><span class="line">httpd2.sam.com</span><br><span class="line"></span><br><span class="line">[nginx]</span><br><span class="line">ngx1.sam.com</span><br><span class="line">ngx1.sam.com</span><br><span class="line">ngx2.sam.com</span><br><span class="line">ngx2.sam.com</span><br><span class="line"></span><br><span class="line">[webservers:children]    <span class="comment"># 引用其他组作为自己组内的主机(子组)</span></span><br><span class="line">apache                      <span class="comment"># apache组</span></span><br><span class="line">nginx                     <span class="comment"># nginx组</span></span><br><span class="line"></span><br><span class="line">[webservers:vars]</span><br><span class="line">ntp_server=ntp.sam.com</span><br><span class="line">ntp_server=ntp.sam.com</span><br></pre></td></tr></table></figure>
 <pre><code>4.通过命令行指定变量，优先级最高
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- hosts: webser</span><br><span class="line">  remote_user: root</span><br><span class="line">  tasks:</span><br><span class="line">    - name: create file</span><br><span class="line">      file: name=/root/&#123;&#123; filename &#125;&#125; state=touch</span><br></pre></td></tr></table></figure>
 <pre><code>ansible-playbook -e filename=test test1.yml
@@ -1352,7 +1352,7 @@ cat nginx.yml
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">575k</span>
+    <span title="站点总字数">578k</span>
   
 
   
@@ -1361,7 +1361,7 @@ cat nginx.yml
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:43</span>
+    <span title="站点阅读时长">8:46</span>
   
 </div>
 
@@ -1382,7 +1382,7 @@ cat nginx.yml
 <div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    
     <span class="post-meta-divider"></span>
 </span>
 

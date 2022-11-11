@@ -147,7 +147,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/04/文本处理三剑客之AWK/40.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/04/文本处理三剑客之AWK/39.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/04/文本处理三剑客之AWK/41.jpg">
-<meta property="og:updated_time" content="2019-03-09T11:54:35.000Z">
+<meta property="og:updated_time" content="2022-11-11T14:55:23.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三剑客之AWK">
 <meta name="twitter:description" content="基本用法：awk [option] &amp;apos;program&amp;apos; var=value file...     Porgram：pattern{action action;...}         pattren，指明要处理的语句的条件         action action，处理的动作 awk [option] -f programfile var=value file... awk">
@@ -533,7 +533,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">9.5k</span>
+                <span title="本文字数">9.8k</span>
               
 
               
@@ -802,7 +802,8 @@ awk -F&quot;,&quot; &apos;{i=1;max=$1;min=$2;while(i&lt;=NF){if(max&gt;$i){max=$
     {if($3 &gt;=min &amp;&amp; $3&lt;=max)print $1,$3}
     chmod +x test.awk
     test.awk -F: min=100 max=200 /etc/passwd
-</code></pre><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre><code> 文件ip_list.txt如下格式，请提取” .magedu.com” 前面的主机名部分并写入到回到该文件中
+</code></pre><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre><code> 文件ip_list.txt如下格式，请提取” .sam.com” 前面的主机名部分并写入到回到该文件中
+ 文件ip_list.txt如下格式，请提取” .sam.com” 前面的主机名部分并写入到回到该文件中
     1 test.sina.com.cn
     2 music.sina.com.cn
     3 sports.sina.com.cn
@@ -825,12 +826,18 @@ grep -Eo &quot;\&lt;[[:alpha:]]+\&gt;&quot; /etc/fstab | awk &apos;{word[$0]++}E
 awk &apos;{ip[$1]++}END{for(i in ip){if(ip[i]&gt;=100){system(&quot;iptables -A INPUT -s i -j REJECT&quot;)}}}&apos; /var/log/httpd/access_log
 
 将以下文件内容中FQDN取出并根据其进行计数从高到低排序
-    http://mail.magedu.com/index.html
-    http://www.magedu.com/test.html
-    http://study.magedu.com/index.html
-    http://blog.magedu.com/index.html
-    http://www.magedu.com/images/logo.jpg
-    http://blog.magedu.com/20080102.html
+    http://mail.sam.com/index.html
+    http://mail.sam.com/index.html
+    http://www.sam.com/test.html
+    http://www.sam.com/test.html
+    http://study.sam.com/index.html
+    http://study.sam.com/index.html
+    http://blog.sam.com/index.html
+    http://blog.sam.com/index.html
+    http://www.sam.com/images/logo.jpg
+    http://www.sam.com/images/logo.jpg
+    http://blog.sam.com/20080102.html
+    http://blog.sam.com/20080102.html
 awk -F &quot;/.&quot; &apos;{print $2}&apos; fqdn.txt | sort | uniq -c | sort -nr
 
 将以下文本以inode为标记，对inode相同的counts进行累加，并且统计出同一inode中，beginnumber的最小值和endnumber的最大值
@@ -1117,7 +1124,7 @@ awk -F &quot;/.&quot; &apos;{print $2}&apos; fqdn.txt | sort | uniq -c | sort -n
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">575k</span>
+    <span title="站点总字数">578k</span>
   
 
   
@@ -1126,7 +1133,7 @@ awk -F &quot;/.&quot; &apos;{print $2}&apos; fqdn.txt | sort | uniq -c | sort -n
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:43</span>
+    <span title="站点阅读时长">8:46</span>
   
 </div>
 
@@ -1147,7 +1154,7 @@ awk -F &quot;/.&quot; &apos;{print $2}&apos; fqdn.txt | sort | uniq -c | sort -n
 <div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    
     <span class="post-meta-divider"></span>
 </span>
 

@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/mysql高可用/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/mysql高可用/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/mysql高可用/3.jpg">
-<meta property="og:updated_time" content="2019-03-09T12:36:37.000Z">
+<meta property="og:updated_time" content="2022-11-11T14:55:23.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql高可用">
 <meta name="twitter:description" content="MySQL高可用解决方案MMM:  Multi-Master Replication Manager for MySQL，Mysql主主复制管理器是一套灵活的脚本程序，基于perl实现，用来对mysql replication进行监控和故障迁移，并 能管理mysql Master-Master复制的配置(同一时间只有一个节点是可写的) [官网]http://www.mysql-mmm.orghtt">
@@ -592,13 +592,15 @@ MHA服务有两种角色，MHA Manager(管理节点）和MHA Node(数据节点�
     vim /etc/mastermha/app1.cnf  
     [server default] 
         user=mhauser 
-        password=magedu 
+        password=sam 
+        password=sam 
         manager_workdir=/data/mastermha/app1/ 
         manager_log=/data/mastermha/app1/manager.log 
         remote_workdir=/data/mastermha/app1/ 
         ssh_user=root 
         repl_user=repluser 
-        repl_password=magedu 
+        repl_password=sam 
+        repl_password=sam 
         ping_interval=1 
         [server1] 
         hostname=192.168.8.17 
@@ -938,7 +940,7 @@ MariaDB Galera Cluster
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">575k</span>
+    <span title="站点总字数">578k</span>
   
 
   
@@ -947,7 +949,7 @@ MariaDB Galera Cluster
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:43</span>
+    <span title="站点阅读时长">8:46</span>
   
 </div>
 
@@ -968,7 +970,7 @@ MariaDB Galera Cluster
 <div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    
     <span class="post-meta-divider"></span>
 </span>
 

@@ -105,7 +105,7 @@
 <meta property="og:site_name" content="濡沫流年">
 <meta property="og:description" content="安装官方的预制包 1.yum安装 ，需要epel     yum install nginx -y 2.编译安装     yum groupinstall &amp;quot;Development Tools&amp;quot; &amp;quot;Server Platform Development&amp;quot;     yum install pcre-devel openssl-devel zlib-devel">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-09T12:12:10.000Z">
+<meta property="og:updated_time" content="2022-11-11T14:55:23.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx安装和基础配置">
 <meta name="twitter:description" content="安装官方的预制包 1.yum安装 ，需要epel     yum install nginx -y 2.编译安装     yum groupinstall &amp;quot;Development Tools&amp;quot; &amp;quot;Server Platform Development&amp;quot;     yum install pcre-devel openssl-devel zlib-devel">
@@ -667,8 +667,10 @@ http协议相关的配置结构
                 server_name fqdn; 指令指向不同的主机名        
 2、server_name name ...;
     指明虚拟主机的主机名称；后可跟多个由空白字符分隔的字符串；
-        支持*通配任意长度的任意字符；server_name *.magedu.com  www.magedu.*
-        支持~起始的字符做正则表达式模式匹配；server_name ~^www\d+\.magedu\.com$
+        支持*通配任意长度的任意字符；server_name *.sam.com  www.sam.*
+        支持*通配任意长度的任意字符；server_name *.sam.com  www.sam.*
+        支持~起始的字符做正则表达式模式匹配；server_name ~^www\d+\.sam\.com$
+        支持~起始的字符做正则表达式模式匹配；server_name ~^www\d+\.sam\.com$
         匹配机制：  
             1) 首先是字符串精确匹配;
             2) 左侧*通配符；
@@ -1060,7 +1062,7 @@ http协议相关的配置结构
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">575k</span>
+    <span title="站点总字数">578k</span>
   
 
   
@@ -1069,7 +1071,7 @@ http协议相关的配置结构
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:43</span>
+    <span title="站点阅读时长">8:46</span>
   
 </div>
 
@@ -1090,7 +1092,7 @@ http协议相关的配置结构
 <div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    
     <span class="post-meta-divider"></span>
 </span>
 

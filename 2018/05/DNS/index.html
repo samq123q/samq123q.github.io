@@ -119,7 +119,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/05/DNS/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/05/DNS/3.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/05/DNS/13.jpg">
-<meta property="og:updated_time" content="2019-03-09T11:54:54.000Z">
+<meta property="og:updated_time" content="2022-11-11T14:55:23.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DNS">
 <meta name="twitter:description" content="DNS基本概念：     DNS是Domain Name System的缩写，即域名系统。DNS服务主要功能是将域名转换为相应的IP地址     DNS服务器可以分为3种，即主域名服务器(Master DNS)、辅助域名服务器(Slave DNS)、缓存服务器     Master DNS:         本身提供DNS 服务，并且本身含有区域数据文件，管理和维护所负责解析的域内解析库的服务器">
@@ -505,7 +505,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">13k</span>
+                <span title="本文字数">14k</span>
               
 
               
@@ -519,7 +519,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">11 分钟</span>
+                <span title="阅读时长">12 分钟</span>
               
             </div>
           
@@ -594,14 +594,17 @@
     (4) 同一个值也可能有多个不同的定义名字；通过多个不同的名字指向同一个值进行定义；此仅表示通过多个不同的名字可以找到同一个主机而已
 1.SOA:
     name [TTL] IN SOA MAIL (VALUE)
-    name: 当前区域的名字，例如“magedu.com.”；
+    name: 当前区域的名字，例如“sam.com.”；
+    name: 当前区域的名字，例如“sam.com.”；
         value: 有多部分组成
             (1) 当前区域的主DNS服务器的FQDN，也可以使用当前区域的名字；
-            (2) 录前区域管理员的邮箱地址；但地址中不能使用@符号，一般用.替换，例如linuxedu.magedu.com；
+            (2) 录前区域管理员的邮箱地址；但地址中不能使用@符号，一般用.替换，例如linuxedu.sam.com；
+            (2) 录前区域管理员的邮箱地址；但地址中不能使用@符号，一般用.替换，例如linuxedu.sam.com；
             (3) (主从服务协调属性的定义以及否定的答案的统一的TTL)
     例如：
         $TTL　1d
-        @   IN  SOA  ns1.magedu.com. admin.magedu.com. (
+        @   IN  SOA  ns1.sam.com. admin.sam.com. (
+        @   IN  SOA  ns1.sam.com. admin.sam.com. (
                         20181101 ;序列号
                         2H  ;刷新时间
                         10M ;重试时间
@@ -613,27 +616,35 @@
         name：当前区域的名称
         VALUE：当前区域的DNS服务器的名称
     例如：
-        magedu.com.     IN      NS      ns1.magedu.com.
+        sam.com.     IN      NS      ns1.sam.com.
+        sam.com.     IN      NS      ns1.sam.com.
 3.MX: 
      name: 当前区域的名字
      value: 当前区域的某邮件服务器(smtp服务器)的主机名；
             一个区域内，MX记录可有多个；但每个记录的value之前应该有一个数字(0-99)，表示此服务器的优先级；数字越小优先级越高；
     例如：
-        magedu.com.     IN      MX  10  mx1.magedu.com.
-                        IN      MX  20  mx2.magedu.com.
+        sam.com.     IN      MX  10  mx1.sam.com.
+        sam.com.     IN      MX  10  mx1.sam.com.
+                        IN      MX  20  mx2.sam.com.
+                        IN      MX  20  mx2.sam.com.
     注意：
         (1) 对MX记录而言，任何一个MX记录后面的服务器名字，都应该在后续有一个A记录
 4.A
-    name: 某主机的FQDN，例如www.magedu.com.
+    name: 某主机的FQDN，例如www.sam.com.
+    name: 某主机的FQDN，例如www.sam.com.
     value: 主机名对应主机的IP地址；
 
     例如：
-        mx1.magedu.com.     IN      A   1.1.1.3
-        mx2.magedu.com.     IN      A   1.1.1.3
+        mx1.sam.com.     IN      A   1.1.1.3
+        mx1.sam.com.     IN      A   1.1.1.3
+        mx2.sam.com.     IN      A   1.1.1.3
+        mx2.sam.com.     IN      A   1.1.1.3
 
     注意：
-        *.magedu.com.       IN      A   1.1.1.4
-        magedu.com.         IN      A   1.1.1.4
+        *.sam.com.       IN      A   1.1.1.4
+        *.sam.com.       IN      A   1.1.1.4
+        sam.com.         IN      A   1.1.1.4
+        sam.com.         IN      A   1.1.1.4
         避免用户写错名称时给错误答案，可通过泛域名解析进行解析至某特定地址；
 5.AAAA:
             name: FQDN
@@ -642,15 +653,18 @@
     name: IP，有特定格式，把IP地址反过来写，1.2.3.4，要写作4.3.2.1；而有特定后缀：in-addr.arpa.，所以完整写法为：4.3.2.1.in-addra.arpa.
     value: FQDN
     例如：
-        4.3.2.1.in-addr.arpa.   IN  PTR     www.magedu.com
+        4.3.2.1.in-addr.arpa.   IN  PTR     www.sam.com
+        4.3.2.1.in-addr.arpa.   IN  PTR     www.sam.com
         简写成：
-        4   IN  PTR     www.magedu.com.
+        4   IN  PTR     www.sam.com.
+        4   IN  PTR     www.sam.com.
     注意：网络地址及后缀可省略；主机地址依然需要反着写；
 7.CNAME：
     name: 别名的FQDN
     value: 名字的FQDN；
     例如：
-    web.magedu.com.     IN      CNAME   www.magedu.com.
+    web.sam.com.     IN      CNAME   www.sam.com.
+    web.sam.com.     IN      CNAME   www.sam.com.
 </code></pre><p><img src="1.jpg" alt></p>
 <h3 id="DNS服务器"><a href="#DNS服务器" class="headerlink" title="DNS服务器"></a>DNS服务器</h3><pre><code>dns服务，程序包名bind，程序名named
 程序包：
@@ -734,14 +748,17 @@ dnssec: 建议关闭dnssec，设为no
         示例：
         $TTL 86400
         $ORIGIN 0.168.192.in-addr.arpa.
-        @   IN  SOA ns1.magedu.com. admin.magedu.com. (
+        @   IN  SOA ns1.sam.com. admin.sam.com. (
+        @   IN  SOA ns1.sam.com. admin.sam.com. (
                             2015042201
                             1H
                             5M
                             7D
                             1D )
-    IN      NS      ns1.magedu.com.
-    IN      NS      ns2.magedu.com. #对于反向区域文件来说，从服务器的NS记录是必须写全，否则区域文件的同步会有问题，
+    IN      NS      ns1.sam.com.
+    IN      NS      ns1.sam.com.
+    IN      NS      ns2.sam.com. #对于反向区域文件来说，从服务器的NS记录是必须写全，否则区域文件的同步会有问题，
+    IN      NS      ns2.sam.com. #对于反向区域文件来说，从服务器的NS记录是必须写全，否则区域文件的同步会有问题，
 
 注意：正反向解析是两个不同的名称空间，是两棵不同的解析树；
 </code></pre><h3 id="从DNS服务器配置"><a href="#从DNS服务器配置" class="headerlink" title="从DNS服务器配置"></a>从DNS服务器配置</h3><pre><code>主从复制：
@@ -801,11 +818,16 @@ dnssec: 建议关闭dnssec，设为no
         ns1.com.    IN      A   2.2.2.1
         ns2.com.    IN      A   2.2.2.2
 
-    magedu.com. 在.com的名称服务器上，解析库中添加资源记录：
-        magedu.com.     IN  NS      ns1.magedu.com.
-        magedu.com.     IN  NS      ns2.magedu.com.
-        ns1.magedu.com.     IN  A   3.3.3.1
-        ns2.magedu.com.     IN  A   3.3.3.2
+    sam.com. 在.com的名称服务器上，解析库中添加资源记录：
+    sam.com. 在.com的名称服务器上，解析库中添加资源记录：
+        sam.com.     IN  NS      ns1.sam.com.
+        sam.com.     IN  NS      ns1.sam.com.
+        sam.com.     IN  NS      ns2.sam.com.
+        sam.com.     IN  NS      ns2.sam.com.
+        ns1.sam.com.     IN  A   3.3.3.1
+        ns1.sam.com.     IN  A   3.3.3.1
+        ns2.sam.com.     IN  A   3.3.3.2
+        ns2.sam.com.     IN  A   3.3.3.2
 </code></pre><h3 id="bind中基础的安全相关的配置："><a href="#bind中基础的安全相关的配置：" class="headerlink" title="bind中基础的安全相关的配置："></a>bind中基础的安全相关的配置：</h3><pre><code>acl: 把一个或多个地址归并为一个集合，并通过一个统一的名称调用；
     acl acl_name {
         ip;
@@ -895,7 +917,8 @@ rrset-order 支持三个参数：fixed, random, cyclic 。
             模拟区域传送：
                 dig -t axfr ZONE_NAME @SERVER
 
-                例如：dig -t axfr magedu.com @172.16.100.11
+                例如：dig -t axfr sam.com @172.16.100.11
+                例如：dig -t axfr sam.com @172.16.100.11
 
         host命令：
             host [-t type] name [SERVER]
@@ -935,11 +958,16 @@ rndc status
 queryperf -d test.txt -s 127.0.0.1 
 wc -l /var/log/message 
 </code></pre><h3 id="压力测试"><a href="#压力测试" class="headerlink" title="压力测试"></a>压力测试</h3><pre><code>vim test.txt 
-    www.magedu.com A 
-    magedu.com NS 
-    magedu.com MX 
-    pop3.magedu.com A 
-    web.magedu.com A 
+    www.sam.com A 
+    www.sam.com A 
+    sam.com NS 
+    sam.com NS 
+    sam.com MX 
+    sam.com MX 
+    pop3.sam.com A 
+    pop3.sam.com A 
+    web.sam.com A 
+    web.sam.com A 
 queryperf -d test.txt -s 127.0.0.1 
 </code></pre>
       
@@ -1210,7 +1238,7 @@ queryperf -d test.txt -s 127.0.0.1
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">575k</span>
+    <span title="站点总字数">578k</span>
   
 
   
@@ -1219,7 +1247,7 @@ queryperf -d test.txt -s 127.0.0.1
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:43</span>
+    <span title="站点阅读时长">8:46</span>
   
 </div>
 
@@ -1240,7 +1268,7 @@ queryperf -d test.txt -s 127.0.0.1
 <div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    
     <span class="post-meta-divider"></span>
 </span>
 

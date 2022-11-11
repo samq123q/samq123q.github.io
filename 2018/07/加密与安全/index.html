@@ -107,7 +107,7 @@
 <meta property="og:description" content="墨菲定律一种心理学效应，是由爱德华·墨菲（Edward A. Murphy）提出的。 原话：如果有两种或两种以上的方式去做某件事情，而其中一种选择方式将导致灾难，则必定有人会做出这种选择  主要内容：     任何事都没有表面看起来那么简单     所有的事都会比你预计的时间长      会出错的事总会出错     如果你担心某种情况发生，那么它就更有可能发生 安全机制防护的目标     保密性">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/07/加密与安全/1.jpg">
-<meta property="og:updated_time" content="2019-03-09T12:54:23.000Z">
+<meta property="og:updated_time" content="2022-11-11T14:55:23.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加密与安全">
 <meta name="twitter:description" content="墨菲定律一种心理学效应，是由爱德华·墨菲（Edward A. Murphy）提出的。 原话：如果有两种或两种以上的方式去做某件事情，而其中一种选择方式将导致灾难，则必定有人会做出这种选择  主要内容：     任何事都没有表面看起来那么简单     所有的事都会比你预计的时间长      会出错的事总会出错     如果你担心某种情况发生，那么它就更有可能发生 安全机制防护的目标     保密性">
@@ -507,7 +507,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">25 分钟</span>
+                <span title="阅读时长">26 分钟</span>
               
             </div>
           
@@ -701,7 +701,8 @@ X.509：定义了证书的结构以及认证协议标准
     openssl req -new -x509 -newkey rsa:1024 -out server.crt
 方法二：
     openssl genrsa -out server.key 1024  -- 生成私钥
-    openssl req -new -x509 -key server.key -out server.crt [-subj &quot;/CN=www.magedu.net&quot;] --私钥生成自签名证书
+    openssl req -new -x509 -key server.key -out server.crt [-subj &quot;/CN=www.sam.net&quot;] --私钥生成自签名证书
+    openssl req -new -x509 -key server.key -out server.crt [-subj &quot;/CN=www.sam.net&quot;] --私钥生成自签名证书
 方法三：
     自己扮演ca机构给自己签名
     openssl genrsa -out server.key 1024 ---- 生成私钥
@@ -982,7 +983,7 @@ rm -rf  /root/.ssh
     key一致，说明目标主机可信
 
 2.批量导入公钥信息copy.sh
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vim ssh_push_key.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">pass=<span class="string">"magedu"</span></span><br><span class="line">rpm -q expect &amp;&gt; /dev/null || yum -y install expect</span><br><span class="line">ssh-keygen -t rsa -P <span class="string">""</span> -f /root/.ssh/id_rsa</span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> ip ;<span class="keyword">do</span></span><br><span class="line">expect &lt;&lt;EOF</span><br><span class="line">spawn ssh-copy-id  -i /root/.ssh/id_rsa.pub  <span class="variable">$ip</span></span><br><span class="line"><span class="comment">#若要增加用户名，则$ip更改为用户@$ip,如：yuan@$ip</span></span><br><span class="line">expect &#123;</span><br><span class="line"><span class="string">"yes/no"</span> &#123; send <span class="string">"yes\n"</span>;exp_continue &#125;</span><br><span class="line"><span class="string">"password"</span> &#123; send <span class="string">"<span class="variable">$pass</span>\n"</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line">expect eof</span><br><span class="line">EOF</span><br><span class="line"><span class="keyword">done</span> &lt; iplist.txt</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vim ssh_push_key.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">pass=<span class="string">"sam"</span></span><br><span class="line">pass=<span class="string">"sam"</span></span><br><span class="line">rpm -q expect &amp;&gt; /dev/null || yum -y install expect</span><br><span class="line">ssh-keygen -t rsa -P <span class="string">""</span> -f /root/.ssh/id_rsa</span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> ip ;<span class="keyword">do</span></span><br><span class="line">expect &lt;&lt;EOF</span><br><span class="line">spawn ssh-copy-id  -i /root/.ssh/id_rsa.pub  <span class="variable">$ip</span></span><br><span class="line"><span class="comment">#若要增加用户名，则$ip更改为用户@$ip,如：yuan@$ip</span></span><br><span class="line">expect &#123;</span><br><span class="line"><span class="string">"yes/no"</span> &#123; send <span class="string">"yes\n"</span>;exp_continue &#125;</span><br><span class="line"><span class="string">"password"</span> &#123; send <span class="string">"<span class="variable">$pass</span>\n"</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line">expect eof</span><br><span class="line">EOF</span><br><span class="line"><span class="keyword">done</span> &lt; iplist.txt</span><br></pre></td></tr></table></figure>
 <pre><code>注意：脚本中iplist.txt文件需要生成，可通过脚本实现
 </code></pre><h3 id="scp命令"><a href="#scp命令" class="headerlink" title="scp命令"></a>scp命令</h3><pre><code>scp命令：
 scp [options] SRC... DEST/
@@ -1270,7 +1271,8 @@ Daemon_list@host格式
 客户端Client_list格式
     以逗号或空格分隔的客户端列表
     基于IP地址：192.168.10.1 192.168.1.
-    基于主机名：www.magedu.com .magedu.com 较少用
+    基于主机名：www.sam.com .sam.com 较少用
+    基于主机名：www.sam.com .sam.com 较少用
     基于网络/掩码：192.168.0.0/255.255.255.0
     基于net/prefixlen: 192.168.1.0/24（CentOS6不支持此写法，只能centos7使用）
     基于网络组（NIS 域）：@mynetwork
@@ -1719,7 +1721,7 @@ student hard nproc 20 用户student不能运行超过20个进程
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">575k</span>
+    <span title="站点总字数">578k</span>
   
 
   
@@ -1728,7 +1730,7 @@ student hard nproc 20 用户student不能运行超过20个进程
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:43</span>
+    <span title="站点阅读时长">8:46</span>
   
 </div>
 
@@ -1749,7 +1751,7 @@ student hard nproc 20 用户student不能运行超过20个进程
 <div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    
     <span class="post-meta-divider"></span>
 </span>
 

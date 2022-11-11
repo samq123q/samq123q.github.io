@@ -106,7 +106,7 @@
 <meta property="og:description" content="参考文档 ngx_http_access_module上下文：http, server, location, limit_except 实现基于ip的访问控制功能 1、allow address | CIDR | unix: | all; 2、deny address | CIDR | unix: | all;  自上而下检查，一旦匹配，将生效，条件严格的置前  示例：      location">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/nginx常用模块/1.jpg">
-<meta property="og:updated_time" content="2019-03-09T12:12:26.000Z">
+<meta property="og:updated_time" content="2022-11-11T14:55:23.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx常用模块">
 <meta name="twitter:description" content="参考文档 ngx_http_access_module上下文：http, server, location, limit_except 实现基于ip的访问控制功能 1、allow address | CIDR | unix: | all; 2、deny address | CIDR | unix: | all;  自上而下检查，一旦匹配，将生效，条件严格的置前  示例：      location">
@@ -469,7 +469,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">7.3k</span>
+                <span title="本文字数">7.4k</span>
               
 
               
@@ -663,8 +663,10 @@ rewirte的处理逻辑：
     例：
         rewrite ^(/download/.*)/media/(.*)\..*$ $1/mp3/$2.mp3
 
-        rewrite  ^/bbs/(.*)$  http://www.magedu.com
-         http://192.168.80.27/bbs/ --&gt; http://www.magedu.com/
+        rewrite  ^/bbs/(.*)$  http://www.sam.com
+        rewrite  ^/bbs/(.*)$  http://www.sam.com
+         http://192.168.80.27/bbs/ --&gt; http://www.sam.com/
+         http://192.168.80.27/bbs/ --&gt; http://www.sam.com/
     redirect和permanent区别
 </code></pre><p><img src="1.jpg" alt></p>
 <pre><code>2、return
@@ -1003,7 +1005,7 @@ rewirte的处理逻辑：
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">575k</span>
+    <span title="站点总字数">578k</span>
   
 
   
@@ -1012,7 +1014,7 @@ rewirte的处理逻辑：
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:43</span>
+    <span title="站点阅读时长">8:46</span>
   
 </div>
 
@@ -1033,7 +1035,7 @@ rewirte的处理逻辑：
 <div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    
     <span class="post-meta-divider"></span>
 </span>
 
